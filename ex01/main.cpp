@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:58:53 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 22:52:59 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 23:38:15 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,4 +271,6 @@ int	main(void)
 	ft_test();
 	std::cout << "Random test for 10000 stack" << std::endl;
 	ft_10000();
+
+	return (0);
 }
