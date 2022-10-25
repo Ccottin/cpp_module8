@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:58:53 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 21:04:06 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 22:52:59 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,32 @@ int	main(void)
 	{ 
 		std::cout << e.what() << std::endl;
 	}
+	try
+	{
+		Span	test(10);
+		
+		test.addNumber(9);
+		test.addNumber(6);
+		test.addNumber(3);
+		test.addNumber(1);
+		test.addNumber(3);
+		test.addNumber(0);
+		std::cout << "longest span = " << test.longestSpan() << std::endl;
+		std::cout << "shortest span = " << test.shortestSpan() << std::endl;
+		std::cout << "ICIIIII" << std::endl;
+		std::cout << "retest" << std::endl << std::endl;
+		Span	retest = test;
+		
+		retest.addMoreNumbers(4);
+		retest.printArray();
+		std::cout << "longest span = " << retest.longestSpan() << std::endl;
+		std::cout << "shortest span = " << retest.shortestSpan() << std::endl << std::endl;
+	}
+	catch (std::exception &e)
+	{ 
+		std::cout << e.what() << std::endl;
+	}
+
 	{
 		Span sp = Span(5);
 		sp.addNumber(6);

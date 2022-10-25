@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:58:49 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 21:01:37 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 22:50:03 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Span::~Span(void)
 
 }
 
-std::vector<int>	Span::getArray(void) const
+std::vector<int>	const &Span::getArray(void) const
 {
 	return (_array);
 }

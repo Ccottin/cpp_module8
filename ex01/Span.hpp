@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:58:46 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 21:04:36 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 22:50:41 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ class	Span
 		void				addNumber(int);
 		void				addMoreNumbers(unsigned int n);
 		void				insertNumbers(unsigned int const pos,
-								unsigned int const n, int const &val);
-		unsigned int		shortestSpan(void) const;
-		unsigned int		longestSpan(void) const;
-		unsigned int		getSize(void) const;
-		void				printArray(void) const;
-		std::vector<int> const	&getArray(void) const;
+									unsigned int const n, int const &val);
+		unsigned int			shortestSpan(void) const;
+		unsigned int			longestSpan(void) const;
+		unsigned int			getSize(void) const;
+		void					printArray(void) const;
+		std::vector<int>const 	&getArray(void) const;
 
 		class TooMuchException : public std::exception 
 		{ virtual char const * what() const throw(); };
