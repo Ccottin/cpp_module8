@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:25:56 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 22:16:10 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 23:45:11 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ void	ft_const_test(void)
 	mstack.push(5);
 	mstack.push(737);
 	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.cbegin();
-	unsigned int i = 0;
-	while (i < mstack.size())
+	MutantStack<int>::const_iterator it = mstack.begin();
+	MutantStack<int>::const_iterator ite = mstack.end();
+	while (it != ite)
 	{
-		std::cout << *(it + i) << std::endl;
-		++i;
+		std::cout << *it << std::endl;
+		++it;
 	}
 	std::cout << "const vector test \n" << std::endl;
 	std::vector<int>	vectore;
@@ -123,12 +123,12 @@ void	ft_const_test(void)
 	vectore.push_back(5);
 	vectore.push_back(737);
 	vectore.push_back(0);
-	const std::vector<int>::iterator itt = vectore.begin();
-	i = 0;
-	while (i < vectore.size())
+	std::vector<int>::const_iterator itt = vectore.begin();
+	std::vector<int>::const_iterator itte = vectore.end();
+	while (itt != itte)
 	{
-		std::cout << *(itt + i) << std::endl;
-		++i;
+		std::cout << *itt << std::endl;
+		++itt;
 	}
 	std::vector<int> s(vectore);
 }
@@ -148,7 +148,7 @@ void	ft_constructors_test(void)
 
 	MutantStack<std::string> test2;
 	test2 = test;
-	std::cout << *(test2.cbegin()) << " , " << *(test2.crbegin()) << std::endl;
+	std::cout << *(test2.begin()) << " , " << *(test2.rbegin()) << std::endl;
 }
 
 void	ft_MoaRtest(void)
