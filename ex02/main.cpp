@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:25:56 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 23:45:11 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/26 00:06:24 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_deque(void)
 	std::deque<int>::iterator ite = keuhu.end();
 	++it;
 	--it;
+	std::cout << "Print = " << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -57,6 +58,7 @@ void	ft_list(void)
 	std::list<int>::iterator ite = listy.end();
 	++it;
 	--it;
+	std::cout << "Print = " << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -81,8 +83,7 @@ void	ft_vector(void)
 	vectore.push_back(0);
 	std::vector<int>::iterator it = vectore.begin();
 	std::vector<int>::iterator ite = vectore.end();
-	++it;
-	--it;
+	std::cout << "Print = " << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -106,6 +107,7 @@ void	ft_const_test(void)
 	mstack.push(0);
 	MutantStack<int>::const_iterator it = mstack.begin();
 	MutantStack<int>::const_iterator ite = mstack.end();
+	std::cout << "Print = " << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -125,6 +127,97 @@ void	ft_const_test(void)
 	vectore.push_back(0);
 	std::vector<int>::const_iterator itt = vectore.begin();
 	std::vector<int>::const_iterator itte = vectore.end();
+	std::cout << "Print = " << std::endl;
+	while (itt != itte)
+	{
+		std::cout << *itt << std::endl;
+		++itt;
+	}
+	std::vector<int> s(vectore);
+}
+
+void	ft_rev_const_test(void)
+{
+	MutantStack<int> mstack;
+
+	std::cout << "rev const test \n" << std::endl;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+	MutantStack<int>::const_reverse_iterator it = mstack.rbegin();
+	MutantStack<int>::const_reverse_iterator ite = mstack.rend();
+	std::cout << "Print = " << std::endl;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::cout << "rev const vector test \n" << std::endl;
+	std::vector<int>	vectore;
+
+	vectore.push_back(5);
+	vectore.push_back(17);
+	std::cout << vectore.back() << std::endl;
+	vectore.pop_back();
+	std::cout << vectore.size() << std::endl;
+	vectore.push_back(3);
+	vectore.push_back(5);
+	vectore.push_back(737);
+	vectore.push_back(0);
+	std::vector<int>::const_reverse_iterator itt = vectore.rbegin();
+	std::vector<int>::const_reverse_iterator itte = vectore.rend();
+	std::cout << "Print = " << std::endl;
+	while (itt != itte)
+	{
+		std::cout << *itt << std::endl;
+		++itt;
+	}
+	std::vector<int> s(vectore);
+}
+
+void	ft_rev_test(void)
+{
+	MutantStack<int> mstack;
+
+	std::cout << "rev test \n" << std::endl;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+	MutantStack<int>::reverse_iterator it = mstack.rbegin();
+	MutantStack<int>::reverse_iterator ite = mstack.rend();
+	std::cout << "Print = " << std::endl;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::cout << "rev vector test \n" << std::endl;
+	std::vector<int>	vectore;
+
+	vectore.push_back(5);
+	vectore.push_back(17);
+	std::cout << vectore.back() << std::endl;
+	vectore.pop_back();
+	std::cout << vectore.size() << std::endl;
+	vectore.push_back(3);
+	vectore.push_back(5);
+	vectore.push_back(737);
+	vectore.push_back(0);
+	std::vector<int>::reverse_iterator itt = vectore.rbegin();
+	std::vector<int>::reverse_iterator itte = vectore.rend();
+	std::cout << "Print = " << std::endl;
 	while (itt != itte)
 	{
 		std::cout << *itt << std::endl;
@@ -171,6 +264,7 @@ void	ft_MoaRtest(void)
 	std::cout << "size = " <<  mstack.size() << std::endl;
 	mstack.pop();
 	mstack.pop();
+	std::cout << "size after pop = " <<  mstack.size() << std::endl;
 	std::cout << "top = " <<  mstack.top() << std::endl;
 }
 
@@ -191,6 +285,7 @@ int		main(void)
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
+	std::cout << "Print = " << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -205,6 +300,10 @@ int		main(void)
 	ft_const_test();
 	std::cout << std::endl;
 	ft_constructors_test();
+	std::cout << std::endl;
+	ft_rev_test();
+	std::cout << std::endl;
+	ft_rev_const_test();
 	std::cout << std::endl;
 	ft_MoaRtest();
 	return 0;

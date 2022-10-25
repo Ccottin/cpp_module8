@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:15:38 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 23:46:04 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 23:52:17 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ class	MutantStack : public std::stack<T> {
 		reverse_iterator	rbegin(void)				{ return (this->c.rbegin()); }
 		reverse_iterator	rend(void)					{ return (this->c.rend()); }
 
-		const_reverse_iterator	crbegin(void) 	const	{ return (this->c.rbegin()); }
-		const_reverse_iterator	crend(void)		const	{ return (this->c.rend()); }
+		const_reverse_iterator	rbegin(void) 	const	{ return (this->c.rbegin()); }
+		const_reverse_iterator	rend(void)		const	{ return (this->c.rend()); }
 
 };
 
