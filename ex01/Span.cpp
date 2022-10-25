@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:58:49 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 18:54:40 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:01:37 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ Span::Span(unsigned int n) : _size(n)
 	
 }
 
-Span::Span(Span const &ref) : _size(ref.getSize())
+Span::Span(Span const &ref) :	_size(ref.getSize()),
+								_array(ref.getArray())
 {
-	*this = ref;
+
 }
 
 Span	&Span::operator=(Span const &ref)
@@ -63,7 +64,7 @@ void			Span::insertNumbers(unsigned int pos, unsigned int n, int const &val)
 {
 	if (pos > _array.size() || getSize() == 0)
 		throw NotEnoughException();
-	if (_array.size() + n + pos > _size || pos > _size)
+	if (_array.size() + n > _size || pos > _size)
 		throw TooMuchException();
 	_array.insert(_array.begin() + pos, n, val);
 }
@@ -77,7 +78,7 @@ void			Span::addMoreNumbers(unsigned int n)
 	srand(time(NULL));
 	while (n > 0)
 	{
-		addNumber(std::rand()%10);
+		addNumber(std::rand()%RAND_MAX);
 		n--;
 	}
 }

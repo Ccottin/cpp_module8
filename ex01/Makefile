@@ -6,11 +6,11 @@
 #    By: ccottin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/03 12:16:24 by ccottin           #+#    #+#              #
-#    Updated: 2022/10/24 14:38:08 by ccottin          ###   ########.fr        #
+#    Updated: 2022/10/25 20:08:37 by ccottin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= easyfind
+NAME	= ex01
 
 SRCS	= main.cpp Span.cpp
 
@@ -22,22 +22,22 @@ DEPS	= $(OBJS:.o=.d)
 
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g3 -MMD
 
-all	:	$(NAME)
+all:	$(NAME)
 
-%.o	:	%.cpp
+%.o:	%.cpp
 		$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME)	:	$(OBJS)
+$(NAME):	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $@
 
-clean	:
+clean:
 		rm -rf $(DEPS)
 		rm -rf $(OBJS)
 
-fclean	:	clean
+fclean:	clean
 		rm -rf $(NAME)
 
-re	:	fclean
+re:		fclean
 		make
 
 -include $(DEPS)

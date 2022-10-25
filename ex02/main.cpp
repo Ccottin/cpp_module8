@@ -6,20 +6,15 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:25:56 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 14:58:49 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 22:16:10 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <vector>
-#include <list>
-#include <map>
-#include <queue>
-
-//creer un test pour array en non dynamique qvec taille fixes
 
 void	ft_deque(void)
 {
+	std::cout << "deque test \n" << std::endl;
 	std::deque<int> keuhu;
 
 	keuhu.push_back(5);
@@ -41,11 +36,11 @@ void	ft_deque(void)
 		std::cout << *it << std::endl;
 		++it;
 	}
-	std::deque<int> s(keuhu);
 }
 
 void	ft_list(void)
 {
+	std::cout << "list test \n" << std::endl;
 	std::list<int>	listy;
 
 	listy.push_back(5);
@@ -67,11 +62,11 @@ void	ft_list(void)
 		std::cout << *it << std::endl;
 		++it;
 	}
-	std::list<int> s(listy);
 }
 
 void	ft_vector(void)
 {
+	std::cout << "vector test \n" << std::endl;
 	std::vector<int>	vectore;
 
 	vectore.push_back(5);
@@ -93,9 +88,91 @@ void	ft_vector(void)
 		std::cout << *it << std::endl;
 		++it;
 	}
+}
+
+void	ft_const_test(void)
+{
+	MutantStack<int> mstack;
+
+	std::cout << "const test \n" << std::endl;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.cbegin();
+	unsigned int i = 0;
+	while (i < mstack.size())
+	{
+		std::cout << *(it + i) << std::endl;
+		++i;
+	}
+	std::cout << "const vector test \n" << std::endl;
+	std::vector<int>	vectore;
+
+	vectore.push_back(5);
+	vectore.push_back(17);
+	std::cout << vectore.back() << std::endl;
+	vectore.pop_back();
+	std::cout << vectore.size() << std::endl;
+	vectore.push_back(3);
+	vectore.push_back(5);
+	vectore.push_back(737);
+	vectore.push_back(0);
+	const std::vector<int>::iterator itt = vectore.begin();
+	i = 0;
+	while (i < vectore.size())
+	{
+		std::cout << *(itt + i) << std::endl;
+		++i;
+	}
 	std::vector<int> s(vectore);
 }
 
+void	ft_constructors_test(void)
+{
+	std::cout << "constructors tests" << std::endl;
+	MutantStack<std::string> mstack;
+
+	for (int i = 0; i < 10; i++)
+		mstack.push("Hello World");
+
+	MutantStack<std::string> test(mstack);
+	MutantStack<std::string>::iterator it = test.begin();
+	MutantStack<std::string>::reverse_iterator ite = test.rbegin();
+	std::cout << *it << " , "  << *ite << std::endl;
+
+	MutantStack<std::string> test2;
+	test2 = test;
+	std::cout << *(test2.cbegin()) << " , " << *(test2.crbegin()) << std::endl;
+}
+
+void	ft_MoaRtest(void)
+{
+	std::cout << "MoaRtest" << std::endl;
+	MutantStack<int> mstack;
+	
+	srand(time(NULL));	
+	for (int i = 0; i < 100; i++)
+		mstack.push(rand()%1000);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::cout << "size = " <<  mstack.size() << std::endl;
+	mstack.pop();
+	mstack.pop();
+	std::cout << "top = " <<  mstack.top() << std::endl;
+}
 
 int		main(void)
 {
@@ -109,7 +186,6 @@ int		main(void)
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
-	//[...]
 	mstack.push(0);
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
@@ -120,33 +196,16 @@ int		main(void)
 		std::cout << *it << std::endl;
 		++it;
 	}
-	std::cout << "\nVector test\n" << std::endl;
-//	ft_vector();
-//	ft_list();
-//	ft_deque();
-	
-	MutantStack<int> s(mstack);
-	
-	s.push(21435);
-	MutantStack<int>::iterator itt = mstack.begin();
-	MutantStack<int>::iterator itte = mstack.end();
-	++itt;
-	--itt;
-	while (itt != itte)
-	{
-		std::cout << *itt << std::endl;
-		++itt;
-	}
-
-	mstack = s;
-	it = mstack.begin();
-	ite = mstack.end();
-	while (it != ite)
-	{
-		std::cout << *it << std::endl;
-		++it;
-	}
-
-	
+	ft_vector();
+	std::cout << std::endl;
+	ft_list();
+	std::cout << std::endl;
+	ft_deque();
+	std::cout << std::endl;
+	ft_const_test();
+	std::cout << std::endl;
+	ft_constructors_test();
+	std::cout << std::endl;
+	ft_MoaRtest();
 	return 0;
 }

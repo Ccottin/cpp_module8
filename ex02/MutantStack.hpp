@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:15:38 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/25 14:52:51 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/25 22:11:23 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <iostream>
 # include <algorithm>
 # include <iterator>
+# include <ctime>
+# include <cstdlib>
+#include <vector>
+#include <list>
+#include <map>
+#include <queue>
 
 template <typename T>
 class	MutantStack : public std::stack<T> {
@@ -32,21 +38,19 @@ class	MutantStack : public std::stack<T> {
 		virtual ~MutantStack(void) { }
 
 		typedef typename	std::stack<T>::container_type::iterator					iterator;
-		typedef typename	std::stack<T>::container_type::const_iterator			const_iterator;
 		typedef typename	std::stack<T>::container_type::reverse_iterator			reverse_iterator;
-		typedef typename	std::stack<T>::container_type::const_reverse_iterator	const_reverse_iterator;
 
 		iterator			begin(void)			{ return (this->c.begin()); }
 		iterator			end(void)			{ return (this->c.end()); }
 		
-		const_iterator		cbegin(void)		{ return (this->c.cbegin()); }
-		const_iterator		cend(void)			{ return (this->c.cend()); }
+		const iterator		cbegin(void)		{ return (this->c.begin()); }
+		const iterator		cend(void)			{ return (this->c.end()); }
 
 		reverse_iterator	rbegin(void)		{ return (this->c.rbegin()); }
 		reverse_iterator	rend(void)			{ return (this->c.rend()); }
 
-		const_reverse_iterator	crbegin(void)	{ return (this->c.crbegin()); }
-		const_reverse_iterator	crend(void)		{ return (this->c.crend()); }
+		const reverse_iterator	crbegin(void)	{ return (this->c.rbegin()); }
+		const reverse_iterator	crend(void)		{ return (this->c.rend()); }
 
 };
 
